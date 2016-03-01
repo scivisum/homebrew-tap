@@ -15,14 +15,6 @@ class Mtr < Formula
     end
   end
 
-  bottle do
-    cellar :any_skip_relocation
-    revision 1
-    sha256 "fba272c1219a2386b034110dc129fa484597e7865b544d979386e0bfa0bc7f2e" => :el_capitan
-    sha256 "96c3b22edc936bb9b7053a1920f34a524fdc3a6d99d32f5c6313a903d6b3ff1f" => :yosemite
-    sha256 "3fb9172a95469e6ee38faeee2e67682f75dd79a6e222426674751846fee5f0a9" => :mavericks
-  end
-
   depends_on "automake" => :build
   depends_on "autoconf" => :build
   depends_on "pkg-config" => :build
