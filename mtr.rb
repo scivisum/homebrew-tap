@@ -15,6 +15,13 @@ class Mtr < Formula
     end
   end
 
+  bottle do
+    root_url "http://mac-repo.scivisum.co.uk/binaries/mtr"
+    cellar :any_skip_relocation
+    revision 2
+    sha256 "ad6094cbb959df4de5e327d61f9b629112514eb03e0789938852e1c5b46b8da9" => :yosemite
+  end
+
   depends_on "automake" => :build
   depends_on "autoconf" => :build
   depends_on "pkg-config" => :build
