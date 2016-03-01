@@ -3,8 +3,8 @@ require 'formula'
 class Flock < Formula
   homepage 'https://github.com/discoteq/flock'
   version '0.2.3'
-  url "https://github.com/discoteq/flock/releases/download/v#{version}/flock-#{version}.tar.xz"
-  sha1 'b57f2669a3d8e314507b853c7ac0ac7969cc4d70'
+  url "http://mac-repo.scivisum.co.uk/sources/flock/flock-#{version}.tar.xz"
+  sha256 '3233658199683c807c21b0ef0fc32246e420f2a6e48f7044d2ccb763ff320c70'
 
   def install
     system './configure', '--disable-debug',
