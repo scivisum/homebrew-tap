@@ -8,6 +8,12 @@ class VncsnapshotPng < Formula
   depends_on "libpng"
   conflicts_with "vncsnapshot", :because => "this package also provides a vncsnapshot binary"
 
+  bottle do
+    root_url "http://mac-repo.scivisum.co.uk/binaries/vncsnapshot-png"
+    cellar :any
+    sha256 "66ca9b83972743d89af4b80a80af333bf83b503c102ff0f492f1dd4787d632a1" => :yosemite
+  end
+
   def install
     system "make"
     bin.install "vncsnapshot"
