@@ -10,6 +10,7 @@ class Flock < Formula
     root_url "http://mac-repo.scivisum.co.uk/binaries/flock"
     cellar :any_skip_relocation
     sha256 "e5d83dad3618e5f39bb88004f578b5ecdad9d926aac2a5f9b36e7d5bd9b3e07f" => :yosemite
+    sha256 "343c50e795706dd117fe4767318bdc7b970fe835a634f2436c040195d64e5e0f" => :mavericks
   end
 
   def install

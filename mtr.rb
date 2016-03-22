@@ -20,6 +20,7 @@ class Mtr < Formula
     cellar :any_skip_relocation
     revision 2
     sha256 "ad6094cbb959df4de5e327d61f9b629112514eb03e0789938852e1c5b46b8da9" => :yosemite
+    sha256 "60ef2b8456e306db3017fa69f0e85e8885284092e442d06bc80b65dbf1a0f44c" => :mavericks
   end
 
   depends_on "automake" => :build
