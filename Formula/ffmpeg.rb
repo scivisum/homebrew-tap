@@ -7,9 +7,6 @@ class Ffmpeg < Formula
   head "https://github.com/FFmpeg/FFmpeg.git"
 
   bottle do
-    # sha256 "1489a9a34835d041ffe6da6ce253b7b202b6a3bd4dd7e9aad8e61a0c085265dd" => :el_capitan
-    # sha256 "6c3c9d51b26eb5bdb1e61bbd713902b8313032ec9d5e16b3512f9af23f16620b" => :yosemite
-    # sha256 "24e11e16f578621a22f96c8b7f4e7369f2f1d5e49b2ccc798082cc7a67e5ee88" => :mavericks
     root_url "http://mac-repo.scivisum.co.uk/binaries/ffmpeg"
     cellar :any
     sha256 "ef7bc9cd31d9c97e460e19efbebdd9650814f1a42884a01f007811c242d440f2" => :yosemite
