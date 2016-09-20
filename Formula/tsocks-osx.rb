@@ -1,7 +1,11 @@
 class TsocksOsx < Formula
     desc "Socks proxy wrapper"
     version "1.8"
-    head "https://github.com/openroc/tsocks-macosx.git", :using => :git
+
+    head do
+        url "https://github.com/openroc/tsocks-macosx.git", :using => :git
+        depends_on "autoconf" => :build
+    end
 
     def install
         system "autoconf"
