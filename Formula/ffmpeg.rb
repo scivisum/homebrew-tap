@@ -9,8 +9,7 @@ class Ffmpeg < Formula
   bottle do
     root_url "http://mac-repo.scivisum.co.uk/binaries/ffmpeg"
     cellar :any
-    revision 1
-    sha256 "ef7bc9cd31d9c97e460e19efbebdd9650814f1a42884a01f007811c242d440f2" => :yosemite
+    revision 2
   end
 
   option "without-x264", "Disable H.264 encoder"
