@@ -82,7 +82,7 @@ class Ffmpeg < Formula
   depends_on "xz" => :optional
   depends_on "libebur128" => :optional
 
-  depends_on "nasm" => :build if build.with? "openh264"
+  depends_on "nasm" => :build if !build.without? "openh264"
 
   # Remove when ffmpeg has support for openh264 1.6.0
   # See https://github.com/cisco/openh264/issues/2505
@@ -94,18 +94,20 @@ class Ffmpeg < Formula
   def install
     args = %W[
       --prefix=#{prefix}
+      --disable-debug
       --enable-shared
       --enable-pthreads
       --enable-gpl
       --enable-version3
       --enable-hardcoded-tables
       --enable-avresample
+      --enable-nonfree
       --cc=#{ENV.cc}
       --host-cflags=#{ENV.cflags}
       --host-ldflags=#{ENV.ldflags}
     ]
 
-    if build.with? "openh264"
+    if !build.without? "openh264"
       resource("openh264-1.5.0").stage do
         system "make", "install-shared", "PREFIX=#{libexec}/openh264-1.5.0"
         chmod 0444, libexec/"openh264-1.5.0/lib/libopenh264.dylib"
@@ -122,26 +124,26 @@ class Ffmpeg < Formula
     args << "--enable-libsnappy" if build.with? "snappy"
 
     args << "--enable-libfontconfig" if build.with? "fontconfig"
-    args << "--enable-libfreetype" if build.with? "freetype"
+    args << "--enable-libfreetype" if !build.without? "freetype"
     args << "--enable-libtheora" if build.with? "theora"
-    args << "--enable-libvorbis" if build.with? "libvorbis"
-    args << "--enable-libvpx" if build.with? "libvpx"
+    args << "--enable-libvorbis" if !build.without? "libvorbis"
+    args << "--enable-libvpx" if !build.without? "libvpx"
     args << "--enable-librtmp" if build.with? "rtmpdump"
     args << "--enable-libopencore-amrnb" << "--enable-libopencore-amrwb" if build.with? "opencore-amr"
     args << "--enable-libfaac" if build.with? "faac"
-    args << "--enable-libass" if build.with? "libass"
+    args << "--enable-libass" if !build.without? "libass"
     args << "--enable-ffplay" if build.with? "ffplay"
     args << "--enable-libssh" if build.with? "libssh"
     args << "--enable-libspeex" if build.with? "speex"
     args << "--enable-libschroedinger" if build.with? "schroedinger"
-    args << "--enable-libfdk-aac" if build.with? "fdk-aac"
+    args << "--enable-libfdk-aac" if !build.without? "fdk-aac"
     args << "--enable-openssl" if build.with? "openssl"
-    args << "--enable-libopus" if build.with? "opus"
+    args << "--enable-libopus" if !build.without? "opus"
     args << "--enable-frei0r" if build.with? "frei0r"
     args << "--enable-libcaca" if build.with? "libcaca"
     args << "--enable-libsoxr" if build.with? "libsoxr"
     args << "--enable-libvidstab" if build.with? "libvidstab"
-    args << "--enable-libx265" if build.with? "x265"
+    args << "--enable-libx265" if !build.without? "x265"
     args << "--enable-libwebp" if build.with? "webp"
     args << "--enable-libzmq" if build.with? "zeromq"
     args << "--enable-libbs2b" if build.with? "libbs2b"
@@ -160,12 +162,6 @@ class Ffmpeg < Formula
       args << "--enable-libopenjpeg"
       args << "--disable-decoder=jpeg2000"
       args << "--extra-cflags=" + `pkg-config --cflags libopenjp2`.chomp
-    end
-
-    # These librares are GPL-incompatible, and require ffmpeg be built with
-    # the "--enable-nonfree" flag, which produces unredistributable libraries
-    if %w[faac fdk-aac openssl].any? { |f| build.with? f }
-      args << "--enable-nonfree"
     end
 
     # A bug in a dispatch header on 10.10, included via CoreFoundation,
