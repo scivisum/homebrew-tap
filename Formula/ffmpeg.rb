@@ -2,7 +2,7 @@ class Ffmpeg < Formula
   desc "Play, record, convert, and stream audio and video"
   homepage "https://ffmpeg.org/"
   url "https://ffmpeg.org/releases/ffmpeg-3.1.2.tar.bz2"
-  revision 2
+  revision 3
   sha256 "62eb8d810b93c1ffc23739c0824a91eabfe5e7be81fab34ce740736a110b70f7"
 
   head "https://github.com/FFmpeg/FFmpeg.git"
@@ -10,33 +10,37 @@ class Ffmpeg < Formula
   bottle do
     root_url "http://mac-repo.scivisum.co.uk/binaries/ffmpeg"
     cellar :any
-    revision 2
+    revision 3
   end
 
   option "without-x264", "Disable H.264 encoder"
   option "without-lame", "Disable MP3 encoder"
   option "without-xvid", "Disable Xvid MPEG-4 video encoder"
   option "without-qtkit", "Disable deprecated QuickTime framework"
+  option "without-libvidstab", "Disable vid.stab support for video stabilization"
+  option "without-openh264", "Disable OpenH264 library"
+  option "without-fdk-aac", "Disable the Fraunhofer FDK AAC library"
+  option "without-ffplay", "Disable FFplay media player"
+  option "without-libass", "Disable ASS/SSA subtitle format"
+  option "without-libvorbis", "Disable OGG Vorbis format"
+  option "without-freetype", "Disable freetype font renderer"
+  option "without-libvpx", "Disable the libvpx codec"
+  option "without-opus", "Disable the opus codec"
+  option "without-x265", "Enable x265 encoder"
 
   option "with-rtmpdump", "Enable RTMP protocol"
-  option "with-libass", "Enable ASS/SSA subtitle format"
   option "with-opencore-amr", "Enable Opencore AMR NR/WB audio format"
   option "with-openjpeg", "Enable JPEG 2000 image format"
   option "with-openssl", "Enable SSL support"
   option "with-libssh", "Enable SFTP protocol via libssh"
   option "with-schroedinger", "Enable Dirac video format"
-  option "with-ffplay", "Enable FFplay media player"
   option "with-tools", "Enable additional FFmpeg tools"
-  option "with-fdk-aac", "Enable the Fraunhofer FDK AAC library"
-  option "with-libvidstab", "Enable vid.stab support for video stabilization"
-  option "with-x265", "Enable x265 encoder"
   option "with-libsoxr", "Enable the soxr resample library"
   option "with-webp", "Enable using libwebp to encode WEBP images"
   option "with-zeromq", "Enable using libzeromq to receive commands sent through a libzeromq client"
   option "with-snappy", "Enable Snappy library"
   option "with-rubberband", "Enable rubberband library"
   option "with-zimg", "Enable z.lib zimg library"
-  option "with-openh264", "Enable OpenH264 library"
   option "with-xz", "Enable decoding of LZMA-compressed TIFF files"
   option "with-libebur128", "Enable using libebur128 for EBU R128 loudness measurement"
 
@@ -49,13 +53,15 @@ class Ffmpeg < Formula
   depends_on "x264" => :recommended
   depends_on "lame" => :recommended
   depends_on "xvid" => :recommended
+  depends_on "freetype" => :recommended
+  depends_on "libvorbis" => :recommended
+  depends_on "libvpx" => :recommended
+  depends_on "opus" => :recommended
+  depends_on "x265" => :recommended
 
   depends_on "faac" => :optional
   depends_on "fontconfig" => :optional
-  depends_on "freetype" => :optional
   depends_on "theora" => :optional
-  depends_on "libvorbis" => :optional
-  depends_on "libvpx" => :optional
   depends_on "rtmpdump" => :optional
   depends_on "opencore-amr" => :optional
   depends_on "libass" => :optional
@@ -65,13 +71,11 @@ class Ffmpeg < Formula
   depends_on "speex" => :optional
   depends_on "schroedinger" => :optional
   depends_on "fdk-aac" => :optional
-  depends_on "opus" => :optional
   depends_on "frei0r" => :optional
   depends_on "libcaca" => :optional
   depends_on "libbluray" => :optional
   depends_on "libsoxr" => :optional
   depends_on "libvidstab" => :optional
-  depends_on "x265" => :optional
   depends_on "openssl" => :optional
   depends_on "libssh" => :optional
   depends_on "webp" => :optional
