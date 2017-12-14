@@ -3,8 +3,8 @@ class Saltstack < Formula
 
   desc "Dynamic infrastructure communication bus"
   homepage "http://www.saltstack.org"
-  url "https://files.pythonhosted.org/packages/1d/75/b969c2495ae6ccbf8b76f6a121027f3ee8cfab9d9a1086e9ccf07d10deae/salt-2016.3.3.tar.gz"
-  sha256 "5906038594f1b9b3ac41714774fbd78f0af80d2f3ffe1c1bf20308032d7d52b6"
+  url "https://pypi.python.org/packages/fc/fb/aaec2dbd2f8a1f394abc42aa654d7084b2c27f61c6e68a8c894cc3424629/salt-2016.3.8.tar.gz"
+  sha256 "9558379a11882348c1299ca094b638feb6bdf8f0d443d2055a71d0c9a52427e3"
   head "https://github.com/saltstack/salt.git", :branch => "develop", :shallow => false
 
   bottle do
