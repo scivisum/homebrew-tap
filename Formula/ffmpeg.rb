@@ -203,7 +203,7 @@ class Ffmpeg < Formula
   end
 
   def caveats
-    if build.without? "faac" then <<-EOS.undent
+    if build.without? "faac" then <<~EOS
       The native FFmpeg AAC encoder has been stable since FFmpeg 3.0. If you
       were using libvo-aacenc or libaacplus, both of which have been dropped in
       FFmpeg 3.0, please consider switching to the native encoder (-c:a aac),

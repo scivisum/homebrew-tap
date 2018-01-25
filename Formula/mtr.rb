@@ -18,7 +18,7 @@ class Mtr < Formula
   bottle do
     root_url "http://mac-repo.scivisum.co.uk/binaries/mtr"
     cellar :any_skip_relocation
-    revision 2
+    rebuild 2
     sha256 "ad6094cbb959df4de5e327d61f9b629112514eb03e0789938852e1c5b46b8da9" => :yosemite
     sha256 "60ef2b8456e306db3017fa69f0e85e8885284092e442d06bc80b65dbf1a0f44c" => :mavericks
   end
@@ -43,7 +43,7 @@ class Mtr < Formula
     system "make", "install"
   end
 
-  def caveats; <<-EOS.undent
+  def caveats; <<~EOS
     mtr requires root privileges so you will need to run `sudo mtr`.
     You should be certain that you trust any software you grant root privileges.
     EOS
