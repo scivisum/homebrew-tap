@@ -1,3 +1,7 @@
+# Changes from official formula:
+# - Pinned version
+# - Added mako dependency
+
 class Saltstack < Formula
   include Language::Python::Virtualenv
 
