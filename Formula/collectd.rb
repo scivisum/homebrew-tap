@@ -35,14 +35,6 @@ class Collectd < Formula
   depends_on :java => :optional
   depends_on "net-snmp"
 
-  fails_with :clang do
-    build 318
-    cause <<~EOS
-      Clang interacts poorly with the collectd-bundled libltdl,
-      causing configure to fail.
-    EOS
-  end
-
   def install
     args = %W[
       --disable-debug
