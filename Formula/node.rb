@@ -9,6 +9,13 @@ class Node < Formula
   depends_on "python@2" => :build
   depends_on "icu4c"
 
+  bottle do
+    root_url "http://mac-repo.scivisum.co.uk/binaries/node"
+    cellar :any
+    sha256 "1e1ece81c47c9c318132fc77039d1751f332de4f1ca0fc7df8b8eac01d3bd7bc" => :high_sierra
+    sha256 "936c363072b2f011e751c2efea48b984bc1c73204370f498f87ca1654ae8b469" => :mojave
+  end
+
   # We track major/minor from upstream Node releases.
   # We will accept *important* npm patch releases when necessary.
   resource "npm" do
