@@ -8,7 +8,7 @@ class Ffmpeg < Formula
   head "https://github.com/FFmpeg/FFmpeg.git"
 
   bottle do
-    root_url "http://mac-repo.scivisum.co.uk/binaries/ffmpeg"
+    root_url "https://mac-repo.scivisum.co.uk/binaries/ffmpeg"
     cellar :any
     rebuild 5
     sha256 "ccee9525ca0d3f644d6ca377c31927fc7acb7bd85220910e12dcc2f2817a876b" => :yosemite

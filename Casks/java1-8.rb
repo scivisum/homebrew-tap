@@ -2,7 +2,7 @@ cask 'java1-8' do
   version '1.8.0_92-b14'
   sha256 '626c2d9478d07318e9e6b2c38707f73aeafc0f7a9ede575062749346a7d347ca'
 
-  url "http://mac-repo.scivisum.co.uk/binaries/oracle-jdk/jdk-#{version.sub(%r{^\d+\.(\d+).*?_(\d+)-.*$}, '\1u\2')}-macosx-x64.dmg"
+  url "https://mac-repo.scivisum.co.uk/binaries/oracle-jdk/jdk-#{version.sub(%r{^\d+\.(\d+).*?_(\d+)-.*$}, '\1u\2')}-macosx-x64.dmg"
   name 'Java Standard Edition Development Kit'
   homepage "http://www.oracle.com/technetwork/java/javase/downloads/jdk#{version.split('.')[1]}-downloads-2133151.html"
   license :gratis
