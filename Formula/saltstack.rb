@@ -13,6 +13,7 @@ class Saltstack < Formula
 
   depends_on "swig" => :build
   depends_on :python if MacOS.version <= :snow_leopard
+  uses_from_macos "python@2" if MacOS.version > :snow_leopard
   depends_on "zeromq"
   depends_on "libyaml"
   depends_on "openssl" # For M2Crypto
@@ -102,7 +103,7 @@ class Saltstack < Formula
   end
 
   def install
-    venv = virtualenv_install_with_resources(:using => "python2")
+    venv = virtualenv_install_with_resources
     resource("M2Crypto").stage do
       inreplace "setup.py", "self.openssl = '/usr'",
                             "self.openssl = '#{Formula["openssl"].opt_prefix}'"
