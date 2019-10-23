@@ -102,7 +102,7 @@ class Saltstack < Formula
   end
 
   def install
-    venv = virtualenv_install_with_resources
+    venv = virtualenv_install_with_resources(:using => "python2")
     resource("M2Crypto").stage do
       inreplace "setup.py", "self.openssl = '/usr'",
                             "self.openssl = '#{Formula["openssl"].opt_prefix}'"
