@@ -3,6 +3,11 @@
 # - Added mako dependency
 
 class Saltstack < Formula
+  resource "homebrew-virtualenv" do
+    url "https://files.pythonhosted.org/packages/b1/72/2d70c5a1de409ceb3a27ff2ec007ecdd5cc52239e7c74990e32af57affe9/virtualenv-15.2.0.tar.gz"
+    sha256 "1d7e241b431e7afce47e77f8843a276f652699d1fa4f93b9d8ce0076fd7b0b54"
+  end
+
   include Language::Python::Virtualenv
 
   desc "Dynamic infrastructure communication bus"
@@ -24,8 +29,8 @@ class Saltstack < Formula
   end
 
   resource "M2Crypto" do
-    url "https://files.pythonhosted.org/packages/9c/58/7e8d8c04995a422c3744929721941c400af0a2a8b8633f129d92f313cfb8/M2Crypto-0.25.1.tar.gz"
-    sha256 "ac303a1881307a51c85ee8b1d87844d9866ee823b4fdbc52f7e79187c2d9acef"
+    url "https://files.pythonhosted.org/packages/74/18/3beedd4ac48b52d1a4d12f2a8c5cf0ae342ce974859fba838cbbc1580249/M2Crypto-0.35.2.tar.gz"
+    sha256 "4c6ad45ffb88670c590233683074f2440d96aaccb05b831371869fc387cbd127"
   end
 
   resource "MarkupSafe" do
@@ -98,17 +103,8 @@ class Saltstack < Formula
     sha256 "4e02fde57bd4abb5ec400181e4c314f56ac3e49ba4fb8b0d50bba18cb27d25ae"
   end
 
-  def resources
-    super - [resource("M2Crypto")]
-  end
-
   def install
     venv = virtualenv_install_with_resources
-    resource("M2Crypto").stage do
-      inreplace "setup.py", "self.openssl = '/usr'",
-                            "self.openssl = '#{Formula["openssl"].opt_prefix}'"
-      venv.pip_install Pathname.pwd
-    end
     prefix.install libexec/"share" # man pages
     (etc/"saltstack").install (buildpath/"conf").children # sample config files
   end
