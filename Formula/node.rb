@@ -6,7 +6,7 @@ class Node < Formula
   head "https://github.com/nodejs/node.git"
 
   depends_on "pkg-config" => :build
-  depends_on "python@2" => :build
+  uses_from_macos "python@2"
   depends_on "icu4c"
 
   bottle do
