@@ -21,16 +21,12 @@ class Saltstack < Formula
   depends_on :python if MacOS.version <= :snow_leopard
   uses_from_macos "python@2" if MacOS.version > :snow_leopard
   depends_on "zeromq"
-  depends_on "libgit2"
   depends_on "libyaml"
   depends_on "openssl@1.1"
 
   on_linux do
     depends_on "pkg-config" => :build
   end
-
-  # Saltstack's Git filesystem backend depends on pygit2 which depends on libgit2
-  # pygit2 must be the same version as libgit2 - mismatched versions are incompatible
 
   resource "Jinja2" do
     url "https://files.pythonhosted.org/packages/7b/db/1d037ccd626d05a7a47a1b81ea73775614af83c2b3e53d86a0bb41d8d799/Jinja2-2.10.3.tar.gz"
@@ -95,11 +91,6 @@ class Saltstack < Formula
   resource "pycrypto" do
     url "https://files.pythonhosted.org/packages/60/db/645aa9af249f059cc3a368b118de33889219e0362141e75d4eaf6f80f163/pycrypto-2.6.1.tar.gz"
     sha256 "f2ce1e989b272cfcb677616763e0a2e7ec659effa67a88aa92b3a65528f60a3c"
-  end
-
-  resource "pygit2" do
-    url "https://files.pythonhosted.org/packages/1d/c4/e0ba65178512a724a86b39565d7f9286c16d7f8e45e2f665973065c4a495/pygit2-1.1.1.tar.gz"
-    sha256 "9255d507d5d87bf22dfd57997a78908010331fc21f9a83eca121a53f657beb3c"
   end
 
   resource "pyzmq" do
