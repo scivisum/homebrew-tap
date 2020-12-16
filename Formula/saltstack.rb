@@ -14,7 +14,8 @@ class Saltstack < Formula
   homepage "https://s.saltstack.com/community/"
   url "https://files.pythonhosted.org/packages/25/ee/cd9ed4a912506f5f6f0eb00891e661840bd9df0fae781f78fa9f04515447/salt-2019.2.3.tar.gz"
   sha256 "7497e7dbfd4dc3799bbbc8da63da98b8301bbb644150f3905fe5775a7d81271a"
-  head "https://github.com/saltstack/salt.git", :branch => "develop", :shallow => false
+  license "Apache-2.0"
+  head "https://github.com/saltstack/salt.git", branch: "develop", shallow: false
 
   depends_on "swig" => :build
   depends_on :python if MacOS.version <= :snow_leopard
@@ -23,6 +24,10 @@ class Saltstack < Formula
   depends_on "libgit2"
   depends_on "libyaml"
   depends_on "openssl@1.1"
+
+  on_linux do
+    depends_on "pkg-config" => :build
+  end
 
   # Saltstack's Git filesystem backend depends on pygit2 which depends on libgit2
   # pygit2 must be the same version as libgit2 - mismatched versions are incompatible
