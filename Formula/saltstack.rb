@@ -12,8 +12,8 @@ class Saltstack < Formula
 
   desc "Dynamic infrastructure communication bus"
   homepage "https://s.saltstack.com/community/"
-  url "https://files.pythonhosted.org/packages/25/ee/cd9ed4a912506f5f6f0eb00891e661840bd9df0fae781f78fa9f04515447/salt-2019.2.3.tar.gz"
-  sha256 "7497e7dbfd4dc3799bbbc8da63da98b8301bbb644150f3905fe5775a7d81271a"
+  url "https://files.pythonhosted.org/packages/60/2c/9fe1a3f2eb5380271f2067b2d3d25ffead2fe753f91a22fed0877357498f/salt-2019.2.4.tar.gz"
+  sha256 "afeb1c95db61c9008f95259c0b27e525c8a9957cbc6f51c40e824a92637d2847"
   license "Apache-2.0"
   head "https://github.com/saltstack/salt.git", branch: "develop", shallow: false
 
@@ -154,7 +154,7 @@ class Saltstack < Formula
     # Fix building of M2Crypto on High Sierra https://github.com/Homebrew/homebrew-core/pull/45895
     ENV.delete("HOMEBREW_SDKROOT") if MacOS.version == :high_sierra
 
-    virtualenv_install_with_resources
+    virtualenv_install_with_resources using: "python@2"
     prefix.install libexec/"share" # man pages
     (etc/"saltstack").install (buildpath/"conf").children # sample config files
   end
