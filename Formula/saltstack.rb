@@ -154,7 +154,7 @@ class Saltstack < Formula
     # Fix building of M2Crypto on High Sierra https://github.com/Homebrew/homebrew-core/pull/45895
     ENV.delete("HOMEBREW_SDKROOT") if MacOS.version == :high_sierra
 
-    virtualenv_install_with_resources using: "python@2"
+    virtualenv_install_with_resources using: "python@2.7"
     prefix.install libexec/"share" # man pages
     (etc/"saltstack").install (buildpath/"conf").children # sample config files
   end
