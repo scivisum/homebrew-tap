@@ -10,9 +10,8 @@ class Collectd < Formula
 
   bottle do
     root_url "https://mac-repo.scivisum.co.uk/binaries/collectd"
-    cellar :any
     rebuild 1
-    sha256 "500eb1d9ad2851796f792df5aa77723b51cc2f6afdd1f2878e21c5af01c0c1a7" => :yosemite
+    sha256 cellar: :any_skip_relocation, yosemite: "500eb1d9ad2851796f792df5aa77723b51cc2f6afdd1f2878e21c5af01c0c1a7"
   end
 
   head do

@@ -10,10 +10,9 @@ class VncsnapshotPng < Formula
 
   bottle do
     root_url "https://mac-repo.scivisum.co.uk/binaries/vncsnapshot-png"
-    cellar :any
     rebuild 1
-    sha256 "66ca9b83972743d89af4b80a80af333bf83b503c102ff0f492f1dd4787d632a1" => :yosemite
-    sha256 "27ae46cd3dc6577280e181582ea938067c2945615ee96785c0af5f375c38b4cc" => :mavericks
+    sha256 cellar: :any_skip_relocation, yosemite: "66ca9b83972743d89af4b80a80af333bf83b503c102ff0f492f1dd4787d632a1"
+    sha256 cellar: :any_skip_relocation, mavericks: "27ae46cd3dc6577280e181582ea938067c2945615ee96785c0af5f375c38b4cc"
   end
 
   def install

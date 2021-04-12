@@ -17,10 +17,9 @@ class Mtr < Formula
 
   bottle do
     root_url "https://mac-repo.scivisum.co.uk/binaries/mtr"
-    cellar :any_skip_relocation
     rebuild 2
-    sha256 "ad6094cbb959df4de5e327d61f9b629112514eb03e0789938852e1c5b46b8da9" => :yosemite
-    sha256 "60ef2b8456e306db3017fa69f0e85e8885284092e442d06bc80b65dbf1a0f44c" => :mavericks
+    sha256 cellar: :any_skip_relocation, yosemite: "ad6094cbb959df4de5e327d61f9b629112514eb03e0789938852e1c5b46b8da9"
+    sha256 cellar: :any_skip_relocation, mavericks: "60ef2b8456e306db3017fa69f0e85e8885284092e442d06bc80b65dbf1a0f44c"
   end
 
   depends_on "automake" => :build
