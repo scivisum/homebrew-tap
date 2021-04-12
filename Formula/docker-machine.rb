@@ -8,11 +8,9 @@ class DockerMachine < Formula
   head "https://github.com/docker/machine.git"
 
   bottle do
-    rebuild 1
-    sha256 cellar: :any_skip_relocation, arm64_big_sur: "da044dcd33a56a30d48a65bcccfc481aeab60401dc67ba05a6f335a11baf97c8"
-    sha256 cellar: :any_skip_relocation, big_sur:       "1f748f5d9d62d898d1f281573a366f33d6f2cc1916458499ac8a79fbc8166208"
-    sha256 cellar: :any_skip_relocation, catalina:      "99b99466af55891199daccd77e78e6006c193c00b8ffb1e624945c6f5a378119"
-    sha256 cellar: :any_skip_relocation, mojave:        "b01a09ab4be172d932acb5b8b8a203df5454117023b9454c617ba383a27e2195"
+    root_url "https://mac-repo.scivisum.co.uk/binaries/docker-machine"
+    rebuild 2
+    sha256 cellar: :any_skip_relocation, high_sierra: "6c5ac18bdded55dcebdfd0ac245b4e62f565461136f45356bcbeab5480ff58a1"
   end
 
   depends_on "automake" => :build
