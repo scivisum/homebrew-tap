@@ -28,6 +28,11 @@ class Saltstack < Formula
     depends_on "pkg-config" => :build
   end
 
+  bottle do
+    root_url "https://mac-repo.scivisum.co.uk/binaries/saltstack"
+    sha256 high_sierra: "cc4bd347d9fab4d05eeabac4fec491836b56a0eac6b2b05fa0968d5655ab9fe9"
+  end
+
   resource "Jinja2" do
     url "https://files.pythonhosted.org/packages/7b/db/1d037ccd626d05a7a47a1b81ea73775614af83c2b3e53d86a0bb41d8d799/Jinja2-2.10.3.tar.gz"
     sha256 "9fe95f19286cfefaa917656583d020be14e7859c6b0252588391e47db34527de"
