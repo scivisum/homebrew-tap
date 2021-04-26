@@ -19,10 +19,9 @@ class Openjdk < Formula
   end
 
   bottle do
-    sha256 cellar: :any, arm64_big_sur: "063189cdbad2c9ef5ab5e7dc34cea1d2fe68a5405b3728eb87765d6c1b9a3a64"
-    sha256 cellar: :any, big_sur:       "13e7d2b43989b42f0af448ac08fc8ecca1e643ed69e16a9b5f7efdde79d4b23d"
-    sha256 cellar: :any, catalina:      "fca110fb6caad1228156b587a3ca9fa9ab5a0d423dee554e9f57b07081c3aac5"
-    sha256 cellar: :any, mojave:        "25b541c2de04a0ccbe55a2c53ce1c1de32ae0da23e162ecb38ca3ecda630efd9"
+    root_url "https://mac-repo.scivisum.co.uk/binaries/openjdk"
+    rebuild 1
+    sha256 cellar: :any, high_sierra: "3a7bc8b591f1c2c488db29164c99929d197c7b16d3752eb2567ec473b3dc0394"
   end
 
   keg_only :shadowed_by_macos
