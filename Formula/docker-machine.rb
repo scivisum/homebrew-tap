@@ -10,7 +10,7 @@ class DockerMachine < Formula
   bottle do
     root_url "https://mac-repo.scivisum.co.uk/binaries/docker-machine"
     rebuild 2
-    sha256 cellar: :any_skip_relocation, high_sierra: "6c5ac18bdded55dcebdfd0ac245b4e62f565461136f45356bcbeab5480ff58a1"
+    sha256 cellar: :any, high_sierra: "6c5ac18bdded55dcebdfd0ac245b4e62f565461136f45356bcbeab5480ff58a1"
   end
 
   depends_on "automake" => :build

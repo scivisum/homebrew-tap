@@ -10,7 +10,7 @@ class Docker < Formula
   bottle do
     root_url "https://mac-repo.scivisum.co.uk/binaries/docker"
     rebuild 1
-    sha256 cellar: :any_skip_relocation, high_sierra: "5623c90699b1c54fd97f71773f42e284fb79b8e544ba9b42071fae6195f0bad0"
+    sha256 cellar: :any, high_sierra: "5623c90699b1c54fd97f71773f42e284fb79b8e544ba9b42071fae6195f0bad0"
   end
 
   depends_on "go" => :build

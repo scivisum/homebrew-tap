@@ -8,8 +8,8 @@ class Flock < Formula
 
   bottle do
     root_url "https://mac-repo.scivisum.co.uk/binaries/flock"
-    sha256 cellar: :any_skip_relocation, yosemite: "e5d83dad3618e5f39bb88004f578b5ecdad9d926aac2a5f9b36e7d5bd9b3e07f"
-    sha256 cellar: :any_skip_relocation, mavericks: "343c50e795706dd117fe4767318bdc7b970fe835a634f2436c040195d64e5e0f"
+    sha256 cellar: :any, yosemite: "e5d83dad3618e5f39bb88004f578b5ecdad9d926aac2a5f9b36e7d5bd9b3e07f"
+    sha256 cellar: :any, mavericks: "343c50e795706dd117fe4767318bdc7b970fe835a634f2436c040195d64e5e0f"
   end
 
   def install
