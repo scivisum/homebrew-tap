@@ -6,10 +6,10 @@ class Libimobiledevice < Formula
   revision 3
 
   bottle do
-    sha256 cellar: :any_skip_relocation, mojave: "08f492ac669856b6c8b24b47837e1ad771d028dd86017c1fa2fd22a64e681183"
-    sha256 cellar: :any_skip_relocation, high_sierra: "99f3f03c16a4a3818ade87ca533a54d411613b9f07e8c61bf49f157771bddc2f"
-    sha256 cellar: :any_skip_relocation, sierra: "430aae9daa52ff2a477d691c338bb7745ca62e4a889027f116112af63613b1c8"
-    sha256 cellar: :any_skip_relocation, el_capitan: "64640027ae8fd012ff75d25c2a6befcc10e688aabcfcb885edef03d24e0e7e23"
+    sha256 cellar: :any, mojave: "08f492ac669856b6c8b24b47837e1ad771d028dd86017c1fa2fd22a64e681183"
+    sha256 cellar: :any, high_sierra: "99f3f03c16a4a3818ade87ca533a54d411613b9f07e8c61bf49f157771bddc2f"
+    sha256 cellar: :any, sierra: "430aae9daa52ff2a477d691c338bb7745ca62e4a889027f116112af63613b1c8"
+    sha256 cellar: :any, el_capitan: "64640027ae8fd012ff75d25c2a6befcc10e688aabcfcb885edef03d24e0e7e23"
   end
 
   head do
