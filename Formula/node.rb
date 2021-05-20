@@ -11,8 +11,8 @@ class Node < Formula
 
   bottle do
     root_url "https://mac-repo.scivisum.co.uk/binaries/node"
-    rebuild 2
-    sha256 cellar: :any, high_sierra: "2ca650be72a2f02efa8b76f0a8ce067ead9d93caa9cc5b2a729a22c7f03dd412"
+    rebuild 3
+    sha256 cellar: :any, high_sierra: "69c9cd19de550df958f08823444e6a8e8c9a6f0d38944767f85ee127b125f6d7"
   end
 
   # We track major/minor from upstream Node releases.
