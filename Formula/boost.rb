@@ -11,11 +11,9 @@
   end
 
   bottle do
-    sha256 cellar: :any,                 arm64_big_sur: "3a336c8b1a917f7d9c55abba2905be99dade914bf9b829aab9d5fb6069b6ffcc"
-    sha256 cellar: :any,                 big_sur:       "35c726d8bea731d85af3d6ba173e95b1726cdfac04e020e259937c8e99c3d4e7"
-    sha256 cellar: :any,                 catalina:      "758658d7f1f8cf6c6790609f2a0b0f8349993653c8afce66869ea91d57b1f26f"
-    sha256 cellar: :any,                 mojave:        "1b45c1009cef2b67b2ec21f86e0ff743f2efdbcb5af510067cba3587d44967cb"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "6203e3d6ae16a3e71d79ad67763a59733e84457253c1d44b01a15a72623b8a95"
+    root_url "https://mac-repo.scivisum.co.uk/binaries/boost"
+    rebuild 1
+    sha256 cellar: :any, high_sierra: "719c8cda06ce3af4d5d6a64247b02fc1fda78e21db86aa2e3e8803d23c839b56"
   end
 
   depends_on "icu4c"
