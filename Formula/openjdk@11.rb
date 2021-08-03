@@ -6,12 +6,9 @@ class OpenjdkAT11 < Formula
   license "GPL-2.0-only"
 
   bottle do
-    rebuild 1
-    sha256 cellar: :any,                 arm64_big_sur: "8990371b4279802b949bcff3a2064ea0a51e7a64da7449267a1c4021e2d7d6d8"
-    sha256 cellar: :any,                 big_sur:       "d7e71d43ec9af2cfabd00ecc341b14349c5fb3efc02a7fcd79167471334ecb3c"
-    sha256 cellar: :any,                 catalina:      "888f3f7fcd7f1cb515d39981526fb4c2b89a49ec3111b80a19ff69901648773d"
-    sha256 cellar: :any,                 mojave:        "92c2f6dac0f4fa18415154a71ad4bfb09897b41d25ca063529f7a2b8e270fb1a"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "e918b207536c10a8f9e68c76c05b59c5c9f497030927a66d94c8066d79284d27"
+    root_url "https://mac-repo.scivisum.co.uk/binaries/openjdk"
+    rebuild 2
+    sha256 cellar: :any, high_sierra: "55f7d7135b0fd19f5928bd375d59c078de2468406622367db0ef35cfa8361c85"
   end
 
   keg_only :versioned_formula
