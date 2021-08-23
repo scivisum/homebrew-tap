@@ -5,7 +5,6 @@ cask 'charles-v3' do
   url "https://www.charlesproxy.com/assets/release/#{version}/charles-proxy-#{version}.dmg"
   name 'Charles'
   homepage 'https://www.charlesproxy.com/'
-  license :commercial
 
   app 'Charles.app'
 
