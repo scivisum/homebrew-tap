@@ -11,10 +11,9 @@ class MariadbAT103 < Formula
   end
 
   bottle do
-    sha256 big_sur:      "72f34ff79d91c71cb7874caaca41f19c010c3052d802aea5a36c42c0d5956057"
-    sha256 catalina:     "4e3f8083f8af8ddb1b640a25159a5db978766748cf7fa14a75e44a7f54d7337d"
-    sha256 mojave:       "b14b13f547919644455c5128b7b33ac8e94d55bd73870c9de1b28bf9e3e66814"
-    sha256 x86_64_linux: "5ef58f9a8f483b5bda6529ba6c18dc5a3b07bfa43734cac9efe4d4c41faf5946"
+    root_url "https://mac-repo.scivisum.co.uk/binaries/mariadb"
+    rebuild 1
+    sha256 high_sierra: "f9afaaf3dbe00b261479d41eaa1639446a9a058d1e81b58fe7be84ad1ab555c4"
   end
 
   keg_only :versioned_formula
