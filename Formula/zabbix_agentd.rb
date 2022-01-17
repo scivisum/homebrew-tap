@@ -7,7 +7,8 @@ class ZabbixAgentd < Formula
     depends_on "libiconv"
 
     def install
-        system "./configure", "--enable-agent", "--prefix=/usr/local/Cellar/zabbix_agentd"
+        iconv_prefix = Formula["libiconv"].opt_prefix
+        system *%W(./configure --enable-agent --prefix=#{prefix} --with-iconv=#{iconv_prefix})
         system "make"
         sbin.install "src/zabbix_agent/zabbix_agentd"
     end
