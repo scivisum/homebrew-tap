@@ -9,6 +9,6 @@ class ZabbixAgentd < Formula
     def install
         system "./configure", "--enable-agent", "--prefix=/usr/local/Cellar/zabbix_agentd"
         system "make"
-	    sbin.install "src/zabbix_agent/zabbix_agentd"
-    end 
-end 
+        sbin.install "src/zabbix_agent/zabbix_agentd"
+    end
+end
