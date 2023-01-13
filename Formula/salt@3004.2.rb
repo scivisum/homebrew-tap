@@ -6,7 +6,7 @@ class SaltAT30042 < Formula
   url "https://files.pythonhosted.org/packages/78/47/0acfc5d43fcf4b01c3f650ce884525dd2330b8827364e4509819f7e925d3/salt-3004.2.tar.gz"
   sha256 "2fa644f6200d4e36b55846cb372b6e67b6ca0fbec0697f1d8d73e771b665ed70"
   license "Apache-2.0"
-  revision 4
+  revision 5
 
   depends_on "swig" => :build
   depends_on "libgit2"
@@ -24,6 +24,11 @@ class SaltAT30042 < Formula
   patch do
     url "https://mac-repo.scivisum.co.uk/sources/salt@3004.2/libcrypto-location.patch"
     sha256 "53a801c76aec73a3f8ceeebccef482ed93e5d17c7fabc2e395ac7ccee1ad4230"
+  end
+
+  patch do
+    url "https://mac-repo.scivisum.co.uk/sources/salt@3004.2/multiprocessing-exception.patch"
+    sha256 "ce47368b41936a6b8ae66424e6ceb11e8a1da30b03d994b440a1368bd96b7c15"
   end
 
   on_linux do
