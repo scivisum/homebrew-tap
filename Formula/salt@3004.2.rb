@@ -6,7 +6,7 @@ class SaltAT30042 < Formula
   url "https://files.pythonhosted.org/packages/78/47/0acfc5d43fcf4b01c3f650ce884525dd2330b8827364e4509819f7e925d3/salt-3004.2.tar.gz"
   sha256 "2fa644f6200d4e36b55846cb372b6e67b6ca0fbec0697f1d8d73e771b665ed70"
   license "Apache-2.0"
-  revision 3
+  revision 4
 
   depends_on "swig" => :build
   depends_on "libgit2"
@@ -21,7 +21,10 @@ class SaltAT30042 < Formula
 
   uses_from_macos "libffi"
 
-  patch :DATA
+  patch do
+    url "https://mac-repo.scivisum.co.uk/sources/salt@3004.2/libcrypto-location.patch"
+    sha256 "53a801c76aec73a3f8ceeebccef482ed93e5d17c7fabc2e395ac7ccee1ad4230"
+  end
 
   on_linux do
     depends_on "pkg-config" => :build
@@ -273,21 +276,3 @@ class SaltAT30042 < Formula
     assert_match "M2Crypto: Not Installed", output
   end
 end
-
-__END__
---- a/salt/utils/rsax931.py
-+++ b/salt/utils/rsax931.py
-@@ -30,9 +30,11 @@
-         # Search in the following order. salts pkg, homebrew, macports, finnally
-         # system.
-         # look in salts pkg install location.
--        lib = glob.glob("/opt/salt/lib/libcrypto.dylib")
-+        lib = None
-         # Find library symlinks in Homebrew locations.
--        brew_prefix = os.getenv("HOMEBREW_PREFIX", "/usr/local")
-+        brew_prefix = os.getenv("HOMEBREW_PREFIX", "/opt/homebrew")
-+        if not os.path.exists(brew_prefix):
-+            brew_prefix = "/usr/local"
-         lib = lib or glob.glob(
-             os.path.join(brew_prefix, "opt/openssl/lib/libcrypto.dylib")
-         )
