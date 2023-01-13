@@ -6,7 +6,7 @@ class SaltAT30042 < Formula
   url "https://files.pythonhosted.org/packages/78/47/0acfc5d43fcf4b01c3f650ce884525dd2330b8827364e4509819f7e925d3/salt-3004.2.tar.gz"
   sha256 "2fa644f6200d4e36b55846cb372b6e67b6ca0fbec0697f1d8d73e771b665ed70"
   license "Apache-2.0"
-  revision 2
+  revision 3
 
   depends_on "swig" => :build
   depends_on "libgit2"
@@ -275,8 +275,8 @@ class SaltAT30042 < Formula
 end
 
 __END__
---- a/salt-3004.2/salt/utils/rsax931.py
-+++ b/salt-3004.2/salt/utils/rsax931.py
+--- a/salt/utils/rsax931.py
++++ b/salt/utils/rsax931.py
 @@ -30,9 +30,11 @@
          # Search in the following order. salts pkg, homebrew, macports, finnally
          # system.
