@@ -7,7 +7,6 @@ class SaltAT30042 < Formula
   sha256 "2fa644f6200d4e36b55846cb372b6e67b6ca0fbec0697f1d8d73e771b665ed70"
   license "Apache-2.0"
   revision 1
-  head "https://github.com/saltstack/salt.git", branch: "master"
 
   depends_on "swig" => :build
   depends_on "libgit2"
