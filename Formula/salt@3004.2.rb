@@ -28,7 +28,7 @@ class SaltAT30042 < Formula
 
   patch do
     url "https://mac-repo.scivisum.co.uk/sources/salt@3004.2/multiprocessing-exception.patch"
-    sha256 "ce47368b41936a6b8ae66424e6ceb11e8a1da30b03d994b440a1368bd96b7c15"
+    sha256 "07f51db6d16107a1cea5d7574f9534e91f00edf5c0178c0c06db0823a82f6075"
   end
 
   on_linux do
