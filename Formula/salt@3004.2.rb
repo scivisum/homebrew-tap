@@ -6,7 +6,7 @@ class SaltAT30042 < Formula
   url "https://files.pythonhosted.org/packages/78/47/0acfc5d43fcf4b01c3f650ce884525dd2330b8827364e4509819f7e925d3/salt-3004.2.tar.gz"
   sha256 "2fa644f6200d4e36b55846cb372b6e67b6ca0fbec0697f1d8d73e771b665ed70"
   license "Apache-2.0"
-  revision 5
+  revision 6
 
   depends_on "swig" => :build
   depends_on "libgit2"
@@ -185,8 +185,8 @@ class SaltAT30042 < Formula
   end
 
   resource "pygit2" do
-    url "https://files.pythonhosted.org/packages/e7/8a/e52a1c8b9878e9d9743089393f8289bb9c8a81eaab722df22df46a38b9e9/pygit2-1.10.0.tar.gz"
-    sha256 "7c751eee88c731b922e4e487ee287e2e40906b2bd32d0bfd2105947f63e867de"
+    url "https://files.pythonhosted.org/packages/7f/00/075f21ae474fcef679ba1f71b9ecd534493792b508b1919021fb2be67eba/pygit2-1.12.0.tar.gz"
+    sha256 "e9440d08665e35278989939590a53f37a938eada4f9446844930aa2ee30d73be"
   end
 
   resource "pyOpenSSL" do
