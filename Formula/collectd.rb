@@ -27,7 +27,7 @@ class Collectd < Formula
   depends_on "libtool"
   depends_on "net-snmp"
   depends_on "riemann-client"
-  depends_on "python@3.11"
+  depends_on "python@3.10"
 
   uses_from_macos "bison" => :build
   uses_from_macos "flex" => :build
@@ -42,7 +42,7 @@ class Collectd < Formula
     ]
     args << "--with-perl-bindings=PREFIX=#{prefix} INSTALLSITEMAN3DIR=#{man3}" if OS.linux?
 
-    ENV["PYTHON_CONFIG"] = Formula["python@3.11"].opt_bin/"python3-config"
+    ENV["PYTHON_CONFIG"] = Formula["python@3.10"].opt_bin/"python3-config"
     system "./build.sh" if build.head?
     system "./configure", *args
     system "make", "install"
