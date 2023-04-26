@@ -42,7 +42,7 @@ class Collectd < Formula
     ]
     args << "--with-perl-bindings=PREFIX=#{prefix} INSTALLSITEMAN3DIR=#{man3}" if OS.linux?
 
-    ENV["PYTHON_CONFIG"] = Formula["python@3.10"].opt_bin/"python3-config"
+    ENV["PYTHON_CONFIG"] = Formula["python@3.10"].opt_bin/"python3.10-config"
     system "./build.sh" if build.head?
     system "./configure", *args
     system "make", "install"
