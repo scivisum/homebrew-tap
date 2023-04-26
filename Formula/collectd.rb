@@ -5,19 +5,14 @@ class Collectd < Formula
   revision 5
 
   stable do
-    url "https://collectd.org/files/collectd-5.12.0.tar.bz2"
+    url "https://mac-repo.scivisum.co.uk/sources/collectd/collectd-5.12.0.tar.bz2"
     sha256 "5bae043042c19c31f77eb8464e56a01a5454e0b39fa07cf7ad0f1bfc9c3a09d6"
 
     # Fix -flat_namespace being used on Big Sur and later.
     patch do
-      url "https://raw.githubusercontent.com/Homebrew/formula-patches/03cf8088210822aa2c1ab544ed58ea04c897d9c4/libtool/configure-big_sur.diff"
+      url "https://mac-repo.scivisum.co.uk/sources/collectd/configure-big_sur.diff"
       sha256 "35acd6aebc19843f1a2b3a63e880baceb0f5278ab1ace661e57a502d9d78c93c"
     end
-  end
-
-  livecheck do
-    url "https://collectd.org/download.shtml"
-    regex(/href=.*?collectd[._-]v?(\d+(?:\.\d+)+)\.t/i)
   end
 
   bottle do
