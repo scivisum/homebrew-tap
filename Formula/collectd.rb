@@ -22,6 +22,12 @@ class Collectd < Formula
     depends_on "automake" => :build
   end
 
+  bottle do
+    root_url "https://mac-repo.scivisum.co.uk/binaries/collectd"
+    rebuild 1
+    sha256 arm64_monterey: "69b92eef09a989c215e2b2a3fb8af5cbf22057456f66d8d21ec6f6e7eb124105"
+  end
+
   depends_on "pkg-config" => :build
   depends_on "libgcrypt"
   depends_on "libtool"
