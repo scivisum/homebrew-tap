@@ -16,11 +16,6 @@ class FilebeatAT68 < Formula
     ENV["GO111MODULE"] = "off"
     (buildpath/"src/github.com/elastic/beats").install Dir["{*,.git,.gitignore}"]
 
-    xy = Language::Python.major_minor_version "python3"
-    ENV.prepend_create_path "PYTHONPATH", buildpath/"vendor/lib/python#{xy}/site-packages"
-
-    ENV.prepend_path "PATH", buildpath/"vendor/bin"
-
     cd "src/github.com/elastic/beats/filebeat" do
       system "make"
       # prevent downloading binary wheels during python setup
