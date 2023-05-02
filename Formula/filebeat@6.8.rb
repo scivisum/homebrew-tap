@@ -14,7 +14,11 @@ class FilebeatAT68 < Formula
   def install
     ENV["GOPATH"] = buildpath
     ENV["GO111MODULE"] = "off"
-    (buildpath/"src/github.com/elastic/beats").install Dir["{*,.git,.gitignore}"]
+    (buildpath/"src/github.com/elastic/beats").install Dir["*"]
+
+    cd "src/github.com/elastic/beats" do
+      system "git init"
+    end
 
     cd "src/github.com/elastic/beats/filebeat" do
       system "make"
@@ -23,9 +27,7 @@ class FilebeatAT68 < Formula
       system "make", "DEV_OS=darwin", "update"
 
       (etc/"filebeat").install Dir["filebeat.*", "fields.yml", "modules.d"]
-      (etc/"filebeat"/"module").install Dir["_meta/module.generated/*"]
       (libexec/"bin").install "filebeat"
-      prefix.install "_meta/kibana"
     end
 
     prefix.install_metafiles buildpath/"src/github.com/elastic/beats"
