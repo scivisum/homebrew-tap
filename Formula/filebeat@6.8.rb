@@ -4,7 +4,7 @@ class FilebeatAT68 < Formula
   # Hacked filebeat repo to remove x-pack (not open source licensed) and fix some build issues
   url "https://mac-repo.scivisum.co.uk/sources/filebeat/filebeat-noxpack-6.8.23-patched.tar.zst"
   sha256 "b7403874f30b1db009b5c5f8c840a6d388503a55f10e829307c2139d3548a72a"
-  revision 1
+  revision 2
 
   depends_on "go" => :build
   depends_on "python@3.10" => :build
