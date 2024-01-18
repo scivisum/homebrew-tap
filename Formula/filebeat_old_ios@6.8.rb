@@ -23,7 +23,7 @@ class FilebeatOldIosAT68 < Formula
     cd "src/github.com/elastic/beats/filebeat" do
       system "make"
       # prevent downloading binary wheels during python setup
-      system "make", "VENV_EXE=python3.10", "PIP_INSTALL_COMMANDS=--no-binary :all", "python-env"
+      system "make", "PIP_INSTALL_COMMANDS=--no-binary :all", "python-env"
       system "make", "DEV_OS=darwin", "update"
 
       (etc/"filebeat").install Dir["filebeat.*", "fields.yml", "modules.d"]
