@@ -16,6 +16,10 @@ class FilebeatOldIosAT68 < Formula
     ENV["GO111MODULE"] = "off"
     (buildpath/"src/github.com/elastic/beats").install Dir["*"]
 
+    xy = Language::Python.major_minor_version "python3.10"
+    ENV.prepend_create_path "PYTHONPATH", buildpath/"vendor/lib/python#{xy}/site-packages"
+    ENV.prepend_path "PATH", buildpath/"vendor/bin"
+
     cd "src/github.com/elastic/beats" do
       system "git init"
     end
