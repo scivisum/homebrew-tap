@@ -1,4 +1,4 @@
-class FilebeatAT68 < Formula
+class FilebeatOldIosAT68 < Formula
   desc "File harvester to ship log files to Elasticsearch or Logstash"
   homepage "https://www.elastic.co/products/beats/filebeat"
   # Hacked filebeat repo to remove x-pack (not open source licensed) and fix some build issues
