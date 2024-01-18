@@ -7,7 +7,7 @@ class FilebeatOldIosAT68 < Formula
   revision 2
 
   depends_on "go" => :build
-  depends_on "python@3.10" => :build
+  depends_on "python@3.11" => :build
   depends_on "mage" => :build
 
   resource "virtualenv" do
@@ -20,12 +20,12 @@ class FilebeatOldIosAT68 < Formula
     ENV["GO111MODULE"] = "off"
     (buildpath/"src/github.com/elastic/beats").install Dir["*"]
 
-    xy = Language::Python.major_minor_version "python3.10"
+    xy = Language::Python.major_minor_version "python3.11"
     ENV.prepend_create_path "PYTHONPATH", buildpath/"vendor/lib/python#{xy}/site-packages"
     ENV.prepend_path "PATH", buildpath/"vendor/bin"
 
     resource("virtualenv").stage do
-      system "python3.10", *Language::Python.setup_install_args(buildpath/"vendor")
+      system "python3.11", *Language::Python.setup_install_args(buildpath/"vendor")
     end
 
     cd "src/github.com/elastic/beats" do
