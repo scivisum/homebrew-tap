@@ -7,7 +7,7 @@ class FilebeatOldIosAT68 < Formula
   revision 2
 
   depends_on "go" => :build
-  depends_on "python@3.11" => :build
+  depends_on "python@3.10" => :build
   depends_on "mage" => :build
   depends_on "virtualenv" => :build
 
@@ -16,10 +16,6 @@ class FilebeatOldIosAT68 < Formula
     ENV["GO111MODULE"] = "off"
     (buildpath/"src/github.com/elastic/beats").install Dir["*"]
 
-    xy = Language::Python.major_minor_version "python3.11"
-    ENV.prepend_create_path "PYTHONPATH", buildpath/"vendor/lib/python#{xy}/site-packages"
-    ENV.prepend_path "PATH", buildpath/"vendor/bin"
-
     cd "src/github.com/elastic/beats" do
       system "git init"
     end
@@ -27,7 +23,7 @@ class FilebeatOldIosAT68 < Formula
     cd "src/github.com/elastic/beats/filebeat" do
       system "make"
       # prevent downloading binary wheels during python setup
-      system "make", "PIP_INSTALL_COMMANDS=--no-binary :all", "python-env"
+      system "make", "VENV_EXE=python3.10", "PIP_INSTALL_COMMANDS=--no-binary :all", "python-env"
       system "make", "DEV_OS=darwin", "update"
 
       (etc/"filebeat").install Dir["filebeat.*", "fields.yml", "modules.d"]
