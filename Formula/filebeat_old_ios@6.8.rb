@@ -9,11 +9,7 @@ class FilebeatOldIosAT68 < Formula
   depends_on "go" => :build
   depends_on "python@3.11" => :build
   depends_on "mage" => :build
-
-  resource "virtualenv" do
-    url "https://files.pythonhosted.org/packages/d6/37/3ff25b2ad0d51cfd752dc68ee0ad4387f058a5ceba4d89b47ac478de3f59/virtualenv-20.23.0.tar.gz"
-    sha256 "a85caa554ced0c0afbd0d638e7e2d7b5f92d23478d05d17a76daeac8f279f924"
-  end
+  depends_on "virtualenv" => :build
 
   def install
     ENV["GOPATH"] = buildpath
@@ -23,10 +19,6 @@ class FilebeatOldIosAT68 < Formula
     xy = Language::Python.major_minor_version "python3.11"
     ENV.prepend_create_path "PYTHONPATH", buildpath/"vendor/lib/python#{xy}/site-packages"
     ENV.prepend_path "PATH", buildpath/"vendor/bin"
-
-    resource("virtualenv").stage do
-      system "python3.11", *Language::Python.setup_install_args(buildpath/"vendor")
-    end
 
     cd "src/github.com/elastic/beats" do
       system "git init"
