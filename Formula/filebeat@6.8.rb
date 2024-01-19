@@ -11,6 +11,12 @@ class FilebeatAT68 < Formula
   depends_on "mage" => :build
   depends_on "virtualenv" => :build
 
+  bottle do
+    root_url "https://mac-repo.scivisum.co.uk/binaries/filebeat-6.8"
+    rebuild 1
+    sha256 cellar: :any_skip_relocation, arm64_monterey: "a73ef0495c83e4a12e29b0985a39b585ee5bbe6c77f4176b6d67dd5dbfd01ba5"
+  end
+
   def install
     ENV["GOPATH"] = buildpath
     ENV["GO111MODULE"] = "off"
