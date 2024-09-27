@@ -9,7 +9,7 @@ class SaltAT30042 < Formula
   revision 6
 
   depends_on "swig" => :build
-  depends_on "libgit2"
+  depends_on "libgit2@1.6"
   depends_on "libyaml"
   depends_on "openssl@1.1"
   depends_on "python@3.10"
@@ -17,7 +17,6 @@ class SaltAT30042 < Formula
   depends_on "zeromq"
 
   conflicts_with "saltstack", because: "different versions of the same software"
-  conflicts_with "salt", because: "different versions of the same software"
 
   uses_from_macos "libffi"
 
@@ -38,6 +37,21 @@ class SaltAT30042 < Formula
   end
 
   # Homebrew installs optional dependencies: pycryptodome, pygit2
+
+  resource "setuptools" do
+    url "https://files.pythonhosted.org/packages/source/s/setuptools/setuptools-65.5.0.tar.gz"
+    sha256 "512e5536220e38146176efb833d4a62aa726b7bbff82cfbc8ba9eaa3996e0b17"
+  end
+
+  resource "pip" do
+    url "https://files.pythonhosted.org/packages/source/p/pip/pip-23.2.1.tar.gz"
+    sha256 "fb0bd5435b3200c602b5bf61d2d43c2f13c02e29c1707567ae7fbc514eb9faf2"
+  end
+
+  resource "wheel" do
+    url "https://files.pythonhosted.org/packages/source/w/wheel/wheel-0.40.0.tar.gz"
+    sha256 "cd1196f3faee2b31968d626e1731c94f99cbdb67cf5a46e4f5656cbee7738873"
+  end
 
   resource "apache-libcloud" do
     url "https://files.pythonhosted.org/packages/b6/a0/707142df518a602a2e36f9aa4f6dcc2cc9981843ffb7ba1207f7a084819d/apache-libcloud-2.5.0.tar.gz"
@@ -210,8 +224,8 @@ class SaltAT30042 < Formula
   end
 
   resource "PyYAML" do
-    url "https://files.pythonhosted.org/packages/a0/a4/d63f2d7597e1a4b55aa3b4d6c5b029991d3b824b5bd331af8d4ab1ed687d/PyYAML-5.4.1.tar.gz"
-    sha256 "607774cbba28732bfa802b54baa7484215f530991055bb562efbed5b2f20a45e"
+    url "https://files.pythonhosted.org/packages/64/c2/b80047c7ac2478f9501676c988a5411ed5572f35d1beff9cae07d321512c/PyYAML-5.3.1.tar.gz"
+    sha256 "b8eac752c5e14d3eca0e6dd9199cd627518cb5ec06add0de9d32baeee6fe645d"
   end
 
   resource "pyzmq" do
