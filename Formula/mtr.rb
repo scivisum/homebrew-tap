@@ -13,6 +13,14 @@ class Mtr < Formula
       url "https://mac-repo.scivisum.co.uk/sources/mtr/63a1f1493bfbaf7e55eb7e20b3791fc8b14cf92d.patch"
       sha256 "67d682b29fca49d703f48bb2844e1c0e4b4635d0645d139a13352d9575336194"
     end
+
+    if MacOS.version >= :monterey
+      patch do
+        url "https://mac-repo.scivisum.co.uk/sources/mtr/getopt.patch"
+        sha256 "91c6450ce545aec9ca3a0243e881d4e1b2867e86480983362f0726def67dbef3"
+      end
+    end
+
   end
 
   bottle do
