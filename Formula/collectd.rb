@@ -26,6 +26,7 @@ class Collectd < Formula
     root_url "https://mac-repo.scivisum.co.uk/binaries/collectd"
     rebuild 1
     sha256 arm64_monterey: "69b92eef09a989c215e2b2a3fb8af5cbf22057456f66d8d21ec6f6e7eb124105"
+    sha256 arm64_sequoia: "fb5bdf310e308791b6f02edfee0d98c6930b2be709631b3383e5c2c8c7876d9b"
   end
 
   depends_on "pkg-config" => :build
