@@ -11,10 +11,11 @@ class SaltAT30042 < Formula
   depends_on "swig" => :build
   depends_on "libgit2@1.6"
   depends_on "libyaml"
-  depends_on "openssl@1.1"
+  depends_on "openssl@3"
   depends_on "python@3.10"
   depends_on "six"
   depends_on "zeromq"
+  depends_on "rust"
 
   conflicts_with "saltstack", because: "different versions of the same software"
 
@@ -89,8 +90,8 @@ class SaltAT30042 < Formula
   end
 
   resource "cryptography" do
-    url "https://files.pythonhosted.org/packages/d4/85/38715448253404186029c575d559879912eb8a1c5d16ad9f25d35f7c4f4c/cryptography-3.3.2.tar.gz"
-    sha256 "5a60d3780149e13b7a6ff7ad6526b38846354d11a15e21068e57073e29e19bed"
+    url "https://files.pythonhosted.org/packages/10/91/90b8d4cd611ac2aa526290ae4b4285aa5ea57ee191c63c2f3d04170d7683/cryptography-35.0.0.tar.gz"
+    sha256 "9933f28f70d0517686bd7de36166dda42094eac49415459d9bdf5e7df3e0086d"
   end
 
   resource "distro" do
@@ -274,7 +275,12 @@ class SaltAT30042 < Formula
   end
 
   def install
-    ENV["SWIG_FEATURES"]="-I#{Formula["openssl@1.1"].opt_include}"
+    openssl_dir = Formula["openssl@3"].opt_prefix
+
+    ENV["LDFLAGS"] = "-L#{openssl_dir}/lib"
+    ENV["CPPFLAGS"] = "-I#{openssl_dir}/include"
+    ENV["PKG_CONFIG_PATH"] = "#{openssl_dir}/lib/pkgconfig"
+    ENV["SWIG_FEATURES"] = "-I#{openssl_dir}/include"
 
     virtualenv_install_with_resources
 
