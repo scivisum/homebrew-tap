@@ -17,7 +17,7 @@ class Mtr < Formula
     if MacOS.version >= :monterey
       patch do
         url "https://mac-repo.scivisum.co.uk/sources/mtr/getopt.patch"
-        sha256 "91c6450ce545aec9ca3a0243e881d4e1b2867e86480983362f0726def67dbef3"
+        sha256 "406a037ca85341a0e857b7ace4bce3940ece9b685467bcd4f56be8f4d8683dbf"
       end
     end
 
