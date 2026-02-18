@@ -9,10 +9,10 @@ class FilebeatAT93 < Formula
   license "Apache-2.0"
   head "https://github.com/elastic/beats.git", branch: "main"
 
-#  bottle do
-#    root_url "https://mac-repo.scivisum.co.uk/binaries/filebeat-9.1"
-#    sha256 cellar: :any_skip_relocation, arm64_sequoia: "f585c2f081f2bb81bce97c9c2d1f1391333080b89d634edbdff7106720a12b11"
-#  end
+  bottle do
+    root_url "https://mac-repo.scivisum.co.uk/binaries/filebeat-9.3"
+    sha256 cellar: :any_skip_relocation, arm64_sequoia: "7079e8cf6f8b25aea6161ff9abc4ec715bfa0a64c8b24504bca2fde166e5ce98"
+  end
 
   depends_on "go" => :build
   depends_on "mage" => :build
