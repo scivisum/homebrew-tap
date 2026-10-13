@@ -13,7 +13,6 @@ class SaltAT30042 < Formula
   depends_on "libyaml"
   depends_on "openssl@3"
   depends_on "python@3.10"
-  depends_on "six"
   depends_on "zeromq"
   depends_on "rust"
 
@@ -242,6 +241,11 @@ class SaltAT30042 < Formula
   resource "setproctitle" do
     url "https://files.pythonhosted.org/packages/78/9a/cf6bf4c472b59aef3f3c0184233eeea8938d3366bcdd93d525261b1b9e0a/setproctitle-1.2.3.tar.gz"
     sha256 "ecf28b1c07a799d76f4326e508157b71aeda07b84b90368ea451c0710dbd32c0"
+  end
+
+  resource "six" do
+    url "https://files.pythonhosted.org/packages/71/39/171f1c67cd00715f190ba0b100d606d440a28c93c7714febeca8b79af85e/six-1.16.0.tar.gz"
+    sha256 "1e61c37477a1626458e36f7b1d82aa5c9b094fa4802892072e49de9c60c4c926"
   end
 
   resource "smmap" do
