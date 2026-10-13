@@ -289,7 +289,7 @@ class SaltAT30042 < Formula
     # Pip's isolated build envs would otherwise pull the latest wheel, which can't
     # build the old setuptools sdist above.
     (buildpath/"build-constraints.txt").write "wheel==0.40.0\n"
-    ENV["PIP_CONSTRAINT"] = buildpath/"build-constraints.txt"
+    ENV["PIP_BUILD_CONSTRAINT"] = buildpath/"build-constraints.txt"
 
     virtualenv_install_with_resources
 
