@@ -38,21 +38,6 @@ class SaltAT30042 < Formula
 
   # Homebrew installs optional dependencies: pycryptodome, pygit2
 
-  resource "setuptools" do
-    url "https://files.pythonhosted.org/packages/source/s/setuptools/setuptools-65.5.0.tar.gz"
-    sha256 "512e5536220e38146176efb833d4a62aa726b7bbff82cfbc8ba9eaa3996e0b17"
-  end
-
-  resource "pip" do
-    url "https://files.pythonhosted.org/packages/source/p/pip/pip-23.2.1.tar.gz"
-    sha256 "fb0bd5435b3200c602b5bf61d2d43c2f13c02e29c1707567ae7fbc514eb9faf2"
-  end
-
-  resource "wheel" do
-    url "https://files.pythonhosted.org/packages/source/w/wheel/wheel-0.40.0.tar.gz"
-    sha256 "cd1196f3faee2b31968d626e1731c94f99cbdb67cf5a46e4f5656cbee7738873"
-  end
-
   resource "apache-libcloud" do
     url "https://files.pythonhosted.org/packages/b6/a0/707142df518a602a2e36f9aa4f6dcc2cc9981843ffb7ba1207f7a084819d/apache-libcloud-2.5.0.tar.gz"
     sha256 "8f133038710257d39f9092ccaea694e31f7f4fe02c11d7fcc2674bc60a9448b6"
@@ -199,8 +184,8 @@ class SaltAT30042 < Formula
   end
 
   resource "pygit2" do
-    url "https://files.pythonhosted.org/packages/7f/00/075f21ae474fcef679ba1f71b9ecd534493792b508b1919021fb2be67eba/pygit2-1.12.0.tar.gz"
-    sha256 "e9440d08665e35278989939590a53f37a938eada4f9446844930aa2ee30d73be"
+    url "https://files.pythonhosted.org/packages/09/50/f0795db653ceda94f4388d2b40598c188aa4990715909fabcf16b381b843/pygit2-1.13.3.tar.gz"
+    sha256 "0257c626011e4afb99bdb20875443f706f84201d4c92637f02215b98eac13ded"
   end
 
   resource "pyOpenSSL" do
@@ -286,9 +271,11 @@ class SaltAT30042 < Formula
     ENV["PKG_CONFIG_PATH"] = "#{openssl_dir}/lib/pkgconfig"
     ENV["SWIG_FEATURES"] = "-I#{openssl_dir}/include"
 
-    # Pip's isolated build envs would otherwise pull the latest wheel, which can't
-    # build the old setuptools sdist above.
-    (buildpath/"build-constraints.txt").write "wheel==0.40.0\n"
+    # Old sdists need pkg_resources and a matching wheel, which newer build-env defaults lack
+    (buildpath/"build-constraints.txt").write <<~EOS
+      setuptools<80
+      wheel<0.41
+    EOS
     ENV["PIP_BUILD_CONSTRAINT"] = buildpath/"build-constraints.txt"
 
     virtualenv_install_with_resources
@@ -306,7 +293,7 @@ class SaltAT30042 < Formula
     output = shell_output("#{bin}/salt --config-dir=#{testpath} --log-file=/dev/null --versions")
     assert_match "Salt: #{version}", output
     assert_match "Python: #{Formula["python@3.10"].version}", output
-    assert_match "libgit2: #{Formula["libgit2"].version}", output
+    assert_match "libgit2: #{Formula["libgit2@1.7"].version}", output
     assert_match "M2Crypto: Not Installed", output
   end
 end
