@@ -9,7 +9,7 @@ class SaltAT30042 < Formula
   revision 6
 
   depends_on "swig" => :build
-  depends_on "libgit2@1.6"
+  depends_on "libgit2@1.7"
   depends_on "libyaml"
   depends_on "openssl@3"
   depends_on "python@3.10"
