@@ -39,6 +39,8 @@ class Mtr < Formula
   def install
     # We need to add this because nameserver8_compat.h has been removed in Snow Leopard
     ENV["LIBS"] = "-lresolv"
+    # The bundled getopt and unprototyped callbacks are incompatible with C23.
+    ENV.append "CFLAGS", "-std=gnu99"
     args = %W[
       --disable-dependency-tracking
       --prefix=#{prefix}
