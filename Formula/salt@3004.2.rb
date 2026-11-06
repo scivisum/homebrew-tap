@@ -6,7 +6,7 @@ class SaltAT30042 < Formula
   url "https://files.pythonhosted.org/packages/78/47/0acfc5d43fcf4b01c3f650ce884525dd2330b8827364e4509819f7e925d3/salt-3004.2.tar.gz"
   sha256 "2fa644f6200d4e36b55846cb372b6e67b6ca0fbec0697f1d8d73e771b665ed70"
   license "Apache-2.0"
-  revision 6
+  revision 7
 
   depends_on "swig" => :build
   depends_on "libgit2@1.7"
@@ -183,6 +183,11 @@ class SaltAT30042 < Formula
     sha256 "48cc2cfc251f04a6142badeb666d1ff49ca6fdfc303fd72579f62b768aaa52b9"
   end
 
+  resource "pip" do
+    url "https://files.pythonhosted.org/packages/fe/6e/74a3f0179a4a73a53d66ce57fdb4de0080a8baa1de0063de206d6167acc2/pip-25.3.tar.gz"
+    sha256 "8d0538dbbd7babbd207f261ed969c65de439f6bc9e5dbd3b3b9a77f25d95f343"
+  end
+
   resource "pygit2" do
     url "https://files.pythonhosted.org/packages/09/50/f0795db653ceda94f4388d2b40598c188aa4990715909fabcf16b381b843/pygit2-1.13.3.tar.gz"
     sha256 "0257c626011e4afb99bdb20875443f706f84201d4c92637f02215b98eac13ded"
@@ -221,6 +226,12 @@ class SaltAT30042 < Formula
   resource "requests" do
     url "https://files.pythonhosted.org/packages/6b/47/c14abc08432ab22dc18b9892252efaf005ab44066de871e72a38d6af464b/requests-2.25.1.tar.gz"
     sha256 "27973dd4a904a4f13b263a19c866c13b92a39ed1c964655f025f3f8d3d75b804"
+  end
+
+  # Salt 3004's pip execution and state modules require pkg_resources.
+  resource "setuptools" do
+    url "https://files.pythonhosted.org/packages/65/d8/10a70e86f6c28ae59f101a9de6d77bf70f147180fbf40c3af0f64080adc3/setuptools-70.3.0.tar.gz"
+    sha256 "f171bab1dfbc86b132997f26a119f6056a57950d058587841a0082e8830f9dc5"
   end
 
   resource "setproctitle" do
@@ -290,6 +301,12 @@ class SaltAT30042 < Formula
   end
 
   test do
+    system libexec/"bin/python", "-c", "import pkg_resources, mako, six"
+    assert_match libexec.to_s, shell_output("#{libexec}/bin/pip --version")
+    output = shell_output("#{bin}/salt-call --local --config-dir=#{testpath} --log-file=/dev/null " \
+                          "--retcode-passthrough sys.list_state_functions pip")
+    assert_match "pip.installed", output
+
     output = shell_output("#{bin}/salt --config-dir=#{testpath} --log-file=/dev/null --versions")
     assert_match "Salt: #{version}", output
     assert_match "Python: #{Formula["python@3.10"].version}", output
